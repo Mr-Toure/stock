@@ -23,8 +23,8 @@ jobs:
         run: php artisan key:generate
       - name: Build assets
         run: npm install
-      - name: Run migrations
-        run: php artisan migrate:fresh --seeder UserTableSeeder
+      #- name: Run migrations
+        #run: php artisan migrate:fresh --seeder UserTableSeeder
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
