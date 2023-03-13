@@ -22,7 +22,7 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
       - name: Build assets
-        run: npm install && npm run production
+        run: npm install && npm run prod
       - name: Run migrations
         run: php artisan migrate --force
       - name: Generate storage link
