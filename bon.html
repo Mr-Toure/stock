@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<style>
+		body{
+			display: block;
+			align-content: center;
+			width: 80%;
+			margin: auto;
+			clear: both;
+			opacity: 1;
+		}
+
+		.filigrane{
+			position: fixed;
+			width: 100%;
+			background-image:url('/public/img/mairie.png');
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			position: relative;
+			background-size: cover;
+			opacity:.75;
+			z-index:-10
+		}
+
+		.printType{
+			text-align: center;
+		}
+		
+		.dc{
+			padding: 5px;
+		}
+		table{
+			border: 1px solid #ccc;
+			border-collapse: collapse;
+			width: 90%;
+			text-align: center;
+		}
+		thead {
+			background-color: lavender;
+		}	
+
+		th,
+		td {
+			border: 1px solid black;
+
+			max-width: 300px;
+			padding: 15px;
+			line-height: 20px;
+		}
+
+		.bodyContent{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.printFooter, .row{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.arm{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="filigrane"></div>
+	<div class="printElements">
+		<div class="row">
+			<div class="img">
+				<img src="/public/img/logo.jpg" alt="" width="300">
+			</div>
+			<div class="arm">
+				<span>RÉPUBLIQUE DE CÔTE D'IVOIRE</span> <br>
+				<span style="font-weight: normal;">Union - Discipline - Travail </span>
+			</div>
+		</div>
+		<div class="printHeader">
+			<div class="rci">
+				<h2 class="printType">
+					<span><b><u>BON DE RECEPTION</u></b></span>
+				</h2>
+				<div class="printTitle">
+					
+				</div>
+			</div>
+		</div>
+		<div class="printBody">
+			<div class="pez">
+					<div class="bodyHeader">
+						<div class="dc">
+							<div><b>Date de R&eacute;ception: </b> <!-- <?= date('d/m/Y') ?> --> 09-02-2023</div>
+							<div style="text-align: right;"><b>Direction</b> : GESTION DE STOCK </div>
+						</div>
+						<div class="dc"><b>Nom : </b> TOURE SIMPLICE</div>
+						<div class="dc"><b>Email : </b> TOURE.SIMPLICE@OUTLOOK.FR</div>
+						<br>
+					</div>
+					<div class="bodyContent"><br>
+						<table class="table">
+							<thead class="bg-secondary text-white">
+								<tr>
+									<th width="20">MARQUE</th>
+									<th>DESIGNATION</th>
+									<th width="25">Qte DEMANDE</th>
+									<th width="25">Qte ACCORDE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>HP</td>
+									<td align="left">Toner HP 410A JAUNE 3</td>
+									<td>3</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>HP</td>
+									<td align="left">Toner HP 410A JAUNE 3</td>
+									<td>3</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>HP</td>
+									<td align="left">Toner HP 410A JAUNE 3</td>
+									<td>3</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>HP</td>
+									<td align="left">Toner HP 410A JAUNE 3</td>
+									<td>3</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>HP</td>
+									<td align="left">Toner HP 410A JAUNE 3</td>
+									<td>3</td>
+									<td>1</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div class="bodyFooter">
+						<b><u>Observation :</u></b>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+			</div>
+			<br>
+			<br>
+			<br>
+		<div class="printFooter">
+			<div><u>Pour la direction</u></div>
+			<div><u>Pour le Service Gestion du Parc Informatique</u></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.content{
+    width: 100%;
+    height: 650px;
+}
+.headers{
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    color: #cbeffc;
+    font: normal bold 20px/40px Aller;
+}
+.headers span{
+    position: relative;
+    top: -7px;
+}
+.middle{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #17A2B8, #716aca);
+}
+
+/* WAVE WAVE SYSTEM */
+
+.wave{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 143px;
+    background: url(../pictures/wave.png);
+    animation: wave 10s linear infinite;
+}
+
+.wave::before{
+    content: '';
+    width: 100%;
+    height: 143px;
+    background: url(../pictures/wave.png);
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0.4;
+    animation: wave-reverse 10s linear infinite;
+}
+.wave::after{
+    content: '';
+    width: 100%;
+    height: 143px;
+    background: url(../pictures/wave.png);
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0.4;
+    animation: wave 20s linear infinite;
+    animation-delay: -5s;
+}
+
+@keyframes wave{
+    0%{
+        background-position: 0;
+    }100%{
+        background-position: 1360px;
+    }
+}
+
+@keyframes wave-reverse{
+    0%{
+        background-position: 1360px;
+    }100%{
+        background-position: 0;
+    }
+}
+
+/* FONT AND MESSAGE  */
+
+.content .contenu{
+    width: 100%;
+    height: 500px;
+}
+.first{
+    width: 40%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+.first span{
+    color: #cbeffc;
+    vertical-align: middle;
+    font: normal bold 17vmax verdana;
+}
+.first a{
+    display: block;
+    width: 200px;
+    height: 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #343a40;
+    border: 4px solid #343a40;
+    color: white;
+    transition: 0.3s;
+    text-align: center;
+    margin: 20px auto 0;
+    font: normal normal 17px/30px calibri;
+}
+.first a:hover{
+    background-color: #23272b;
+    border-color: #1d2124;
+    transition: 0.3s;
+}
+.second{
+    width: 60%;
+    height: 100%;
+    color: wheat;
+    float: left;
+}
+.second span{
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+    vertical-align: baseline;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.error{
+    text-align: center;
+    font: normal bold 7vmax calibri;
+}
+.message{
+    text-align: center;
+    font: normal bold 3vmax/5vmax calibri;
+}
+
+
+.clear{
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+
+
