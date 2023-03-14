@@ -90,7 +90,7 @@
                 </ul>
             </div>
         </li>
-        <li class="side-nav-item">
+        {{-- <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarArticle" aria-expanded="false" aria-controls="sidebarArticle" class="side-nav-link">
                 <i class="mdi mdi-mouse"></i>
                 <span> Informatique </span>
@@ -106,7 +106,7 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarCategorie" aria-expanded="false" aria-controls="sidebarCategorie" class="side-nav-link">

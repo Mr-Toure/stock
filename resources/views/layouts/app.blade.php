@@ -3,10 +3,10 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Logiciel GestStock</title>
+        <title>Moyen Generaux Bouake</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Logiciel de Gestion de Gestion de Stock" name="description" />
-        <meta content="Coderthemes" name="Toure Simplice" />
+        <meta content="Logiciel des Moyens generaux du tribunal premeiere instance Bouake" name="description" />
+        <meta content="Développeur fullstack (toure-simplice@outlook.fr)" name="Touré Simplice" />
 
         <!-- App favicon-->
         <link rel="shortcut icon" href="favicon.jpg">
@@ -55,12 +55,12 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Inci</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Acceuil</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Application</a></li>
                                             <li class="breadcrumb-item active">{{ $fil ?? 'Tableau de Bord'}}</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Gest-Stock ... {{ $page ?? '' }}</h4>
+                                    <h4 class="page-title">Gestion des Moyens Généraux <b>{{ $page ?? '' }}</b></h4>
                                 </div>
                             </div>
                         </div>
@@ -73,9 +73,9 @@
                     <!-- Footer Start -->
                     <footer class="footer">
                         <div class="container-fluid">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <div class="col-md-6">
-                                    <script>document.write(new Date().getFullYear())</script> © Gest-Stock - Mariade
+                                    <script>document.write(new Date().getFullYear())</script> © Fait avec <span class="text-danger" style="font-size: 1.5em">♥</span> Par <b class="text-danger">Mairiade</b> Logiciel de Gestion Des Moyens Généraux Du Tribunal de Première Instance Bouake
                                 </div>
                                 {{-- <div class="col-md-6">
                                     <div class="text-md-end footer-links d-none d-md-block">
@@ -135,7 +135,6 @@
         <script src="{{ asset('assets/js/vendor/buttons.html5.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/buttons.flash.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/buttons.print.min.js') }}"></script>
-
 
         <script src="{{ asset('assets/js/pages/demo.form-wizard.js') }}"></script>
     </body>
