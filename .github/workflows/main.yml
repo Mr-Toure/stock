@@ -35,4 +35,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /home2/portbouet/apps.port-bouet.ci
+          server-dir: /home2/portbouet/apps.port-bouet.ci/
