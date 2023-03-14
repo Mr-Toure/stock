@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEMANDES DE CONSOMMABLES</title>
+    <link rel="shortcut icon" href="favicon.jpg">
     <link rel="stylesheet" href="{{ asset('assets/besoins/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/besoins/css/myStyle.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/besoins/css/FontStyle.css') }}">
@@ -76,6 +77,6 @@
             });
         });
     </script>
-    
+
 </body>
 </html>

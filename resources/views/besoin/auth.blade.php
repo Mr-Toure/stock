@@ -14,8 +14,8 @@
     <section id="main">
         <div id="middleBlue"></div>
 		<div class="auth contens">
-			<div class="logo">
-				<img src="{{ asset('/img/mairie.png')}}" alt="Logo inci">
+			<div class="logo mt-4">
+				<img src="{{ asset('/img/justice.png')}}" alt="Logo inci">
 			</div>
 			<div class="forms">
 				<form method="POST" action="{{ route('besoins.verify') }}"  role="form" enctype="multipart/form-data">

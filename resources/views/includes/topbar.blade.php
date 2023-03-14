@@ -4,10 +4,10 @@
         <!-- LOGO -->
         <a href="/" class="topnav-logo">
             <span class="topnav-logo-lg">
-                <img src="{{ asset('img/soleil.png') }}" alt=""  height="80">
+                <img src="{{ asset('img/justice.png') }}" alt="" width="10%"  height="">
             </span>
             <span class="topnav-logo-sm">
-                <img src="{{ asset('img/mairie.png') }}" alt="" height="16">
+                <img src="{{ asset('favicon.jpg') }}" alt="" height="16">
             </span>
         </a>
 

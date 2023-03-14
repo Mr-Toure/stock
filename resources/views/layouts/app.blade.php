@@ -8,8 +8,8 @@
         <meta content="Logiciel de Gestion de Gestion de Stock" name="description" />
         <meta content="Coderthemes" name="Toure Simplice" />
 
-        <!-- App favicon
-        <link rel="shortcut icon" href="assets/images/favicon.ico">-->
+        <!-- App favicon-->
+        <link rel="shortcut icon" href="favicon.jpg">
         {{--  @notinfyCss --}}
        {{--  <link href="{{ asset('assets/css/stepform.css') }}" rel="stylesheet"> --}}
         <!-- CDN -->
