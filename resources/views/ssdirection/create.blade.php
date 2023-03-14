@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Ajout Sous departement ou sous direction</span>
+                        <span class="card-title">Ajout de Service</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ssdirections.store') }}"  role="form" enctype="multipart/form-data">

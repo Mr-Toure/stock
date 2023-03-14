@@ -79,11 +79,11 @@
                         <a href="{{ route("directions.index") }}"><i class="uil-store me-1"></i>Direction</a>
                     </li>
                     <li>
-                        <a href="{{ route('ssdirections.index') }}"><i class="uil-store me-1"></i>Sous-Direction</a>
+                        <a href="{{ route('ssdirections.index') }}"><i class="uil-store me-1"></i>Services</a>
                     </li>
-                    <li>
+                   {{--  <li>
                         <a href="{{ route('services.index') }}"><i class="uil-store me-1"></i>Services</a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('agents.index') }}"><i class="uil-store me-1"></i>Agent</a>
                     </li>

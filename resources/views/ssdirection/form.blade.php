@@ -19,6 +19,6 @@
 
     </div>
     <div class="box-footer d-flex justify-content-end py-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Soumettre</button>
     </div>
 </div>
