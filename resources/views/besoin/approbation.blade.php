@@ -49,7 +49,7 @@
 											<td>{{ $besoin->fournitures[0]->typefour->libelle }}</td>
 											<td>{{ $besoin->agent->name }} {{ $besoin->agent->surname }}</td>
 											<td>{{ $besoin->created_at->format('d-m-Y') }}</td>
-											<td>{{ $besoin->agent->service->ssdirection->direction->initiale }}</td>
+											<td>{{ $besoin->agent->ssdirection->direction->initiale }}</td>
 
                                             <td>
                                                 <a class="btn btn-sm btn-success " href="{{ route('besoins.terminated',$besoin->id) }}"><i class="fa fa-fw fa-check"></i></a>

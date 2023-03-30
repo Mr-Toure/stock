@@ -31,21 +31,21 @@
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
                     </div> --}}
                     <div class="card-body">
-						<div class="form-group">
+						<div class="form-group my-2">
                             <strong>Nom & Prénom(s)</strong>
                             {{ $besoin->agent->name}} {{ $besoin->agent->surname}}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-2">
                             <strong>Libelle:</strong>
                             {{ $besoin->libelle }}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-2">
                             <strong>Date expression besoin:</strong>
                             {{ $besoin->created_at->format('d-m-Y H:m:s') }}
                         </div>
-                        <div class="form-group">
-                            <strong>Service</strong>
-                            {{ $besoin->agent->service->libelle }}
+                        <div class="form-group my-2">
+                            <strong>Service : </strong>
+                            {{ $besoin->agent->ssdirection->libelle }}
                         </div>
                         <table class="table table-hover table-centered mb-0">
                             <thead>
@@ -107,6 +107,8 @@
                                             @if (isset($fourniture->instock->qte))
                                                 @if($fourniture->instock->qte == 0 )
                                                     class="bg-danger"
+                                                @elseif($fourniture->pivot->qte > $fourniture->instock->qte)
+                                                class="bg-warning"
                                                 @endif
                                             @else
                                                 class="bg-danger"

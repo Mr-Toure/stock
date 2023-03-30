@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             DirectionSeeder::class,
             SsdirectionSeeder::class,
-            ServiceSeeder::class,
-            FamilleSeeder::class,
-            TypefourSeeder::class,
-            FournisseurSeeder::class,
-            FournitureSeeder::class,
-            AgentSeeder::class,
+            //ServiceSeeder::class,
+            //FamilleSeeder::class,
+            //TypefourSeeder::class,
+            //FournisseurSeeder::class,
+            //FournitureSeeder::class,
+            //AgentSeeder::class,
         ]);
     }
 }

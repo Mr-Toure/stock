@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\Service;
+use App\Models\Ssdirection;
 use Illuminate\Http\Request;
 
 /**
@@ -20,7 +21,7 @@ class AgentController extends Controller
     public function index()
     {
         $agents = Agent::paginate();
-
+        //dd( $agents->service);
         return view('agent.index', compact('agents'))->with('i');
     }
 
@@ -32,8 +33,8 @@ class AgentController extends Controller
     public function create()
     {
         $agent = new Agent();
-        $services = Service::pluck('libelle', 'id');
-        return view('agent.create', compact(['agent', 'services']));
+        $ssdirection = Ssdirection::pluck('libelle', 'id');
+        return view('agent.create', compact(['agent', 'ssdirection']));
     }
 
     /**
@@ -64,12 +65,11 @@ class AgentController extends Controller
             "matricule" => $request->matricule,
             "phone" => $request->phone,
             "post" => $request->post,
-            "service_id" => $request->service_id,
+            "ssdirection_id" => $request->ssdirection_id,
             "picture" => $request->picture,
         ]);
-
-        return redirect()->route('agents.index')
-            ->with('success', 'Agent created successfully.');
+        toast('Bravo! agent ajouté','success');
+        return redirect()->route('agents.index');
     }
 
     /**
@@ -128,9 +128,8 @@ class AgentController extends Controller
             "service_id" => $request->service_id,
             "picture" => $request->picture,
         ]);
-
-        return redirect()->route('agents.index')
-            ->with('success', 'Agent updated successfully');
+        toast('Félicitation! information agent mise à jour','success');
+        return redirect()->route('agents.index');
     }
 
     /**
@@ -141,8 +140,7 @@ class AgentController extends Controller
     public function destroy($id)
     {
         $agent = Agent::find($id)->delete();
-
-        return redirect()->route('agents.index')
-            ->with('success', 'Agent deleted successfully');
+        toast('Bravo! agent revoqué','error');
+        return redirect()->route('agents.index');
     }
 }

@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Mise à jour les Informations Agent</span>
+                        <span class="card-title">Mise à jour les informations de l'agent</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('agents.update', $agent->id) }}"  role="form" enctype="multipart/form-data">

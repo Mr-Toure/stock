@@ -108,11 +108,16 @@ class BesoinController extends Controller
                     }
 
                     $agents = Agent::all();
-
+                    //dd($agents);
                     foreach ($articles as $article) {
                         $data[] = [$article->id, $article->designation];
                     }
-                    //dd($articles);
+
+                    if(empty($articles)){
+                        toast('Il n\'y a pas d\'article en stock','error');
+                        return back();
+                    }
+
                     foreach ( $agents  as $agent) {
                         $surname = $agent->name . ' ' . $agent->surname;
                         $allAgent[] = [$agent->id, $surname];
@@ -166,7 +171,7 @@ class BesoinController extends Controller
     {
         if (session('guest')) {
             $direction = Direction::whereId(session('auth')->id)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->ssdirections->flatMap->agents;
 
             return view('besoin.current')->with(['active'=>'current', 'agents'=>$agents]);
         }else{
@@ -178,7 +183,7 @@ class BesoinController extends Controller
     {
         if (session('guest')) {
             $direction = Direction::whereId(session('auth')->id)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->ssdirections->flatMap->agents;
 
             return view('besoin.history')->with(['active'=>'history', 'agents'=>$agents]);
         }else{
@@ -197,7 +202,8 @@ class BesoinController extends Controller
         if (Direction::wherePass($code)->count())
         {
             $direction = Direction::wherePass($code)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->ssdirections->flatMap->agents;
+            //dd($agents);
             toast('Bienvenu dans le portail de demande, n\'oubliez pas faire valider votre demande.','info');
             session(['guest' => true, 'auth'=>Direction::wherePass($code)->first(), 'agents'=>$agents, 'vip'=>false]);
             //dd(session('auth'));
@@ -207,7 +213,8 @@ class BesoinController extends Controller
         if (Direction::whereVpass($code)->count())
         {
             $direction = Direction::whereVpass($code)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->ssdirections->flatMap->agents;
+            //dd($agents);
             toast('Bienvenu dans le portail de demande','info');
             session(['guest' => true, 'auth'=>Direction::whereVpass($code)->first(), 'agents'=>$agents, 'vip'=>true]);
             return redirect()->route('besoins.home')->with(['pass'=>true]);
@@ -244,7 +251,8 @@ class BesoinController extends Controller
 
     public function terminated($id) {
         $besoin = Bonreception::find($id);
-        if($besoin->count() > 1)
+        //dd($besoin->count());
+        if($besoin->count() >= 1)
         {
             $instock = new Instock();
             foreach ($besoin->fournitures as $i => $fourniture) {

@@ -26,7 +26,7 @@
 		}
 		.table thead {
 			background-color: lavender;
-		}	
+		}
 
 		.table th,
 		.table td {
@@ -59,13 +59,16 @@
 				<tbody>
 					<tr>
 						<td align="left">
-							<div class="img">
-								<img src="{{ public_path('/img/logo.jpg') }}" alt="" width="300">
+							<div class="img" style="margin-left: 25%">
+								<img src="{{ public_path('/img/justice.png') }}" alt="" width="100">
 							</div>
+                            <div>
+                                <h4>Tribunal de Première Instance de Bouaké</h4>
+                            </div>
 						</td>
 						<td align="right">
 							<div text-align="center">
-								<span>RÉPUBLIQUE DE CÔTE D'IVOIRE</span> <br/>
+								<b>RÉPUBLIQUE DE CÔTE D'IVOIRE</b> <br/><br/>
 								<span style="margin-right:30px">Union - Discipline - Travail </span>
 							</div>
 						</td>
@@ -97,7 +100,7 @@
 							<tbody>
 								<tr>
 									<td align="left"><div><b>Date de R&eacute;ception: </b> <?= date('d/m/Y H:m') ?></div></td>
-									<td align="right"><div><b>Direction</b> : {{ $besoin->agent->service->ssdirection->direction->libelle }} </div></td>
+									<td align="right"><div><b>Direction</b> : {{ $besoin->agent->ssdirection->direction->libelle }} </div></td>
 								</tr>
 							</tbody>
 						</table>
@@ -146,8 +149,8 @@
 			<table width="100%">
 				<tbody>
 					<tr>
-						<td align="left"><div><u>Pour la direction</u></div></td>
-						<td align="right"><div><u>Gestion Stock</u></div></td>
+						<td align="left"><div><u>Greffier Chef</u></div></td>
+						<td align="right"><div><u>Moyens Généreaux</u></div></td>
 					</tr>
 				</tbody>
 			</table>
