@@ -37,7 +37,7 @@ class Agent extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','surname','matricule','email','phone','post','picture','service_id'];
+    protected $fillable = ['name','surname','matricule','email','phone','post','picture','ssdirection_id'];
 
 
     /**
@@ -51,9 +51,9 @@ class Agent extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function service()
+    public function ssdirection()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Ssdirection::class);
     }
 
 

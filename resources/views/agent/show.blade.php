@@ -10,11 +10,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="float-left">
+                        {{-- <div class="float-left">
                             <span class="card-title">Show Agent</span>
-                        </div>
+                        </div> --}}
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('agents.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('agents.index') }}"><--</a>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                                     <div class="col-md-8 mt-3">
                                         <div class="form-group">
                                             <strong>Direction:</strong>
-                                            {{ $agent->service->ssdirection->direction->libelle }}
+                                            {{ $agent->ssdirection->direction->libelle ?? '' }}
                                         </div>
                                     </div>
                                 </div>
@@ -62,18 +62,18 @@
                                     <div class="col-md-8 mt-3">
                                         <div class="form-group">
                                             <strong>Sous-Direction:</strong>
-                                            {{ $agent->service->ssdirection->libelle }}
+                                            {{ $agent->ssdirection->libelle ?? '' }}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{--  <div class="row">
                                     <div class="col-md-8 mt-3">
                                         <div class="form-group">
                                             <strong>Service:</strong>
                                             {{ $agent->service->libelle }}
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-md-4 my-3">
                                 <div class="form-group">

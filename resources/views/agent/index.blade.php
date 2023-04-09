@@ -41,7 +41,7 @@
 										<th>Prénom(s)</th>
 										<th>Numero tel</th>
 										<th>Poste Bureau</th>
-										<th>Direction</th>
+										<th>Departement</th>
 
                                         <th></th>
                                     </tr>
@@ -60,7 +60,7 @@
 											<td>{{ $agent->surname }}</td>
 											<td>{{ $agent->phone }}</td>
 											<td>{{ $agent->post }}</td>
-											<td>{{ $agent->service->ssdirection->direction->initiale ?? '' }}</td>
+											<td>{{ $agent->ssdirection->direction->initiale ?? '' }}</td>
 
                                             <td>
                                                 <form action="{{ route('agents.destroy',$agent->id) }}" method="POST">

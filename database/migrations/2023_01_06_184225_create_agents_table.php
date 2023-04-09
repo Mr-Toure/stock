@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('surname');
             $table->string('matricule')->unique();
             $table->string('email')->unique();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->integer('post')->nullable();
             $table->string('picture')->nullable();
 
-            $table->foreignId('service_id')
+            $table->foreignId('ssdirection_id')
                 ->nullable()
                 ->constrained()
                 ->onDelete('restrict')

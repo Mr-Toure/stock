@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => 'test',
-            'email' => 'kassi@test.test',
+            'email' => 'test@test.test',
             'email_verified_at' => now(),
             'password' => password_hash('12345678', 1), // 14785236
             'remember_token' => Str::random(10),

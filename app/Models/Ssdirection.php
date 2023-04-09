@@ -46,9 +46,9 @@ class Ssdirection extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function services()
+    public function agents()
     {
-        return $this->hasMany('App\Models\Service', 'ssdirection_id', 'id');
+        return $this->hasMany(Agent::class);
     }
 
 
