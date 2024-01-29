@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\Fonction;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,8 @@ class AgentController extends Controller
     public function create()
     {
         $agent = new Agent();
-        $services = Service::pluck('libelle', 'id');
-        return view('agent.create', compact(['agent', 'services']));
+        $fonctions = Fonction::pluck('libelle', 'id');
+        return view('agent.create', compact(['agent', 'fonctions']));
     }
 
     /**
@@ -64,7 +65,7 @@ class AgentController extends Controller
             "matricule" => $request->matricule,
             "phone" => $request->phone,
             "post" => $request->post,
-            "service_id" => $request->service_id,
+            "fonction_id" => $request->fonction_id,
             "picture" => $request->picture,
         ]);
 

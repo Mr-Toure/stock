@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             DirectionSeeder::class,
-            SsdirectionSeeder::class,
-            ServiceSeeder::class,
+            /*SsdirectionSeeder::class,
+            ServiceSeeder::class,*/
             FamilleSeeder::class,
             TypefourSeeder::class,
             FournisseurSeeder::class,
             FournitureSeeder::class,
-            AgentSeeder::class,
+            //AgentSeeder::class,
         ]);
     }
 }

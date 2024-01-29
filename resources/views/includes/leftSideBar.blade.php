@@ -85,6 +85,9 @@
                         <a href="{{ route('services.index') }}"><i class="uil-store me-1"></i>Services</a>
                     </li>
                     <li>
+                        <a href="{{ route('fonctions.index') }}"><i class="uil-store me-1"></i>Fonctions</a>
+                    </li>
+                    <li>
                         <a href="{{ route('agents.index') }}"><i class="uil-store me-1"></i>Agent</a>
                     </li>
                 </ul>

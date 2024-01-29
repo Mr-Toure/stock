@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FonctionController;
 use App\Models\Bonreception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -86,6 +87,7 @@ Route::middleware('auth')->group(function () {
         'fournitures' =>FournitureController::class,
         'commandes' =>CommandeController::class,
         'bonlivraisons' =>BonlivraisonController::class,
+        'fonctions' => FonctionController::class,
     ]);
 
     Route::controller(CommandeController::class)->group(function () {

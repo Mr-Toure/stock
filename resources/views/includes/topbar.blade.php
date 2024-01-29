@@ -4,7 +4,7 @@
         <!-- LOGO -->
         <a href="/" class="topnav-logo">
             <span class="topnav-logo-lg">
-                <img src="{{ asset('img/justice.png') }}" alt="" width="10%"  height="">
+                <img src="{{ asset('img/logoPort-bouetSoleil.png') }}" alt="" width="150px"  height="">
             </span>
             <span class="topnav-logo-sm">
                 <img src="{{ asset('favicon.jpg') }}" alt="" height="16">

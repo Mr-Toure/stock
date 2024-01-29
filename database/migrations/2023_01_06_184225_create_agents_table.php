@@ -23,8 +23,7 @@ return new class extends Migration
             $table->integer('post')->nullable();
             $table->string('picture')->nullable();
 
-            $table->foreignId('service_id')
-                ->nullable()
+            $table->foreignId('fonction_id')
                 ->constrained()
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
