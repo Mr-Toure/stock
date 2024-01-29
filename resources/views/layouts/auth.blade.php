@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Scolar Login</title>
+        <title>MyStock Port-Bouët</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Logiciel des Moyens generaux du tribunal premeiere instance Bouake" name="description" />
         <meta content="Développeur fullstack (toure-simplice@outlook.fr)" name="Touré Simplice" />
@@ -24,7 +24,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt">
-            2022 © scolar - Sous-Direction Informatique
+            2024 © MyStock(Touré Simplice) - Sous-Direction Informatique
         </footer>
 
         <!-- bundle -->
