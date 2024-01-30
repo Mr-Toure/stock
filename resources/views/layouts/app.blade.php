@@ -9,7 +9,7 @@
         <meta content="Coderthemes" name="Toure Simplice" />
 
         <!-- App favicon-->
-        <link rel="shortcut icon" href="favicon.jpg">
+        <link rel="shortcut icon" href="{{asset('/img/soleil.gif')}}">
         {{--  @notinfyCss --}}
        {{--  <link href="{{ asset('assets/css/stepform.css') }}" rel="stylesheet"> --}}
         <!-- CDN -->
@@ -55,12 +55,12 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Inci</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Mairie Port-Bouët</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Application</a></li>
-                                            <li class="breadcrumb-item active">{{ $fil ?? 'Tableau de Bord'}}</li>
+                                            <li class="breadcrumb-item active">{{ $fil ?? ''}}</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Gest-Stock ... {{ $page ?? '' }}</h4>
+                                    <h4 class="page-title">MyStock ... {{ $page ?? '' }}</h4>
                                 </div>
                             </div>
                         </div>

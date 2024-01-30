@@ -9,14 +9,14 @@
                         <!-- Logo -->
                         <div class="card-header pt-4 pb-4 text-center scolar-bg">
                             <a href="index.html" class="text-white">
-                                <h1>Moyens Generaux</h1>
+                                <h1>Gestion de Stock</h1>
                             </a>
                         </div>
 
                         <div class="card-body p-4">
 
                             <div class="text-center">
-                                <img src="{{ asset('img/justice.png') }}" alt="" width="175">
+                                <img src="{{ asset('img/mairie.png') }}" alt="" width="175">
                             </div>
 
                             <form method="POST" action="{{ route('login') }}">

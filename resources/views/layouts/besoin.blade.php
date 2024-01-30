@@ -51,7 +51,7 @@
                 </ul>
                 </div>
                 <div class="pb-sun">
-                    <img src="{{asset('/img/logo.jpg')}}" alt="logo inci">
+                    <img src="{{asset('/img/soleil.png')}}" alt="logo mairie">
                 </div>
             </div>
             @yield('content')
