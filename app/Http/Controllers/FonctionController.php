@@ -21,10 +21,10 @@ class FonctionController extends Controller
      */
     public function index()
     {
-        $fonctions = Fonction::paginate();
+        $fonctions = Fonction::with('direction')->get();
 
         return view('fonction.index', compact('fonctions'))
-            ->with('i', (request()->input('page', 1) - 1) * $fonctions->perPage());
+            ->with('i');
     }
 
     /**

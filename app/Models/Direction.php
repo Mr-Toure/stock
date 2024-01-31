@@ -47,5 +47,10 @@ class Direction extends Model
         return $this->hasMany('App\Models\Ssdirection', 'direction_id', 'id');
     }
 
+    public function fonctions()
+    {
+        return $this->hasMany(Fonction::class, 'direction_id', 'id');
+    }
+
 
 }

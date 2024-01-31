@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('fournitures.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Ajouter') }}
                                 </a>
                               </div>
                         </div>
@@ -34,7 +34,7 @@
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>N°</th>
 
 										<th>Picture</th>
 										<th>Désignation</th>
@@ -52,11 +52,11 @@
                                             <td>{{ ++$i }}</td>
                                             <td>
                                                 <div class="d-flex align-items-start">
-                                                    @if($fourniture->typefour->id == 5)
-                                                        <img class="me-2 rounded-circle" src="{{ asset('img/cart.jpg') }}" width="40" alt="image">
+                                                    @if($fourniture->typefour?->id == 5)
+                                                        <img class="me-2 rounded-circle"  src="{{ file_exists(public_path($fourniture->picture)) ? asset($fourniture->picture) : asset('img/cart.jpg')  }}" width="40" alt="image">
                                                     @else
                                                         {{-- <img class="me-2 rounded-circle" src="{{ asset($fourniture->picture) }}" width="40" alt="image"> --}}
-                                                        <img class="me-2 rounded-circle" src="{{ asset("img/four.jpg") }}" width="40" alt="image">
+                                                        <img class="me-2 rounded-circle"  src="{{ file_exists(public_path($fourniture->picture)) ? asset($fourniture->picture) : asset('img/four.jpg')  }}" width="40" alt="image">
                                                     @endif
                                                 </div>
                                             </td>
@@ -64,15 +64,15 @@
 											<td>{{ $fourniture->marque }}</td>
 											<td>{{ $fourniture->qte_seuil }}</td>
 											<td>{{ $fourniture->instock->qte ?? 0 }}</td>
-											<td>{{ $fourniture->typefour->libelle }}</td>
+											<td>{{ $fourniture->typefour?->libelle }}</td>
 
                                             <td>
                                                 <form action="{{ route('fournitures.destroy',$fourniture->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-warning" href="{{ route('fournitures.edit',$fourniture->id) }}"><i class="mdi mdi-table-edit"></i></a>
                                                     <a class="btn btn-sm btn-primary " href="{{ route('fournitures.show',$fourniture->id) }}"><i class="mdi mdi-eye"></i></a>
-                                                    {{-- <a class="btn btn-sm btn-success" href="{{ route('fournitures.edit',$fourniture->id) }}"><i class="mdi mdi-table-edit"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-trash-can"></i> </button> --}}
+                                                     @csrf
+                                                     @method('DELETE')
+                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-trash-can"></i> </button>
                                                 </form>
                                             </td>
                                         </tr>

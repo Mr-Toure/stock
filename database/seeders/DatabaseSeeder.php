@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DirectionSeeder::class,
             /*SsdirectionSeeder::class,
             ServiceSeeder::class,*/
+            FonctionSeeder::class,
             FamilleSeeder::class,
             TypefourSeeder::class,
             FournisseurSeeder::class,

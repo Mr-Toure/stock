@@ -11,7 +11,7 @@
                             <div class="card-body text-center">
                                 <i class="dripicons-store text-info" style="font-size: 24px;"></i>
                                 <h3><span>{{ $fours->count() }}</span></h3>
-                                <p class="text-black font-15 mb-0">Article gérés</p>
+                                <p class="text-black font-15 mb-0">Article géré</p>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                     <img src="{{ asset('img/user.jpg') }}" alt="table-user" class="me-2 rounded-circle" />
                                     {{ $besoin->agent->name }} {{ $besoin->agent->surname }}
                                 </td>
-                                <td>{{ $besoin->agent->service->ssdirection->direction->initiale }}</td>
+                                <td>{{ $besoin->agent->fonction->service->ssdirection->direction->initiale }}</td>
                                 <td>{{ $besoin->created_at->format('d-m-Y H:m') }}</td>
                                 <td class="table-action text-center">
                                     <a class="btn btn-sm btn-info " href="{{ route('besoin.show',$besoin->id) }}"><i class="fa fa-eye"></i></a>

@@ -31,16 +31,13 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
 										<th>Libelle</th>
 										<th>Initial</th>
 										<th>Direction</th>
-										<th>Sous-Direction</th>
-										<th>Service</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -50,11 +47,8 @@
                                             <td>{{ ++$i }}</td>
 
 											<td>{{ $fonction->libelle }}</td>
-											<td>{{ $fonction->initial }}</td>
-											<td>{{ $fonction->direction->libelle }}</td>
-											<td>{{ $fonction->ssdirection->libelle }}</td>
-											<td>{{ $fonction->service->libelle }}</td>
-
+											<td>{{ $fonction->initial ?? "" }}</td>
+											<td>{{ $fonction->direction->libelle ?? ""  }}</td>
                                             <td>
                                                 <form action="{{ route('fonctions.destroy',$fonction->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary block" href="{{ route('fonctions.show',$fonction->id) }}"><i class="fa fa-fw fa-eye"></i> </a>
@@ -71,7 +65,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $fonctions->links() !!}
             </div>
         </div>
     </div>

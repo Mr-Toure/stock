@@ -56,5 +56,13 @@ class Agent extends Model
         return $this->belongsTo(Service::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function fonction()
+    {
+        return $this->belongsTo(Fonction::class);
+    }
+
 
 }

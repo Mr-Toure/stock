@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('fonctions', function (Blueprint $table) {
             $table->id();
             $table->string('libelle');
-            $table->string('initial');
+            $table->string('initial')->nullable();
 
             $table->foreignId('direction_id')
                 ->nullable()

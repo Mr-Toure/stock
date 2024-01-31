@@ -10,9 +10,9 @@
     <div class="main">
     <!--  <div class="btn btn-success col-1 admore fixed-top mt-1" data-count="1" style="left:75%; cursor: pointer;"><i class="fas fa-plus"></i></div>
         <div class="links "><a href="#" id="newNeed" class="btn btn-secondary position-fixed mt-1" data-parent='1' style="right: 5%; top: -1px; z-index: 1000" >Autre Agents ?</a> </div> -->
-        
+
         <form action="{{ route("besoins.send") }}" method="post">
-            {{ csrf_field();  }}
+            {{ csrf_field()  }}
             <div class="row d-flex col-md-12 flex-col justify-content-start" id="needs" data-counter='1'>
                 <div class="sticky-top agent col-md-3 text-center">
                     <div class="profil" id="need-1">
@@ -23,6 +23,7 @@
                         <label for="agent-1"><b>Choisir l'Agent</b></label>
                         <select name="agent" class="custom-select form-control agents" data-count="1" id="agent">
                             <option disabled selected></option>
+
                             @foreach (session('agents') as $agent)
                                 <option class="mb-4" value="{{ $agent->id }}">{{ $agent->name }} {{ $agent->surname }}</option>
                                 <option disabled></option>
@@ -38,12 +39,12 @@
                                 <!--<button class="btn btn-info"><i class="fa fa-plus-circle"></i></button>-->
                                 <a  id="add" class="btn btn-primary my-4"><i class="fa fa-plus-circle"></i></a>
                             </div>
-                            
+
                             <div class="input" id="input">
                                 <div class="form-group w-100">
                                     <div class="add-btn d-flex justify-content-between items-align-center">
                                         <label for="article" class="btn btn-warning">Article </label>
-                                    {{-- </div> --}}   
+                                    {{-- </div> --}}
                                         <div class="form-inline m-1">
                                             <div class="card-body p-4">
                                                 <div id="items" class="row justify-content-between px-3 text-center">
@@ -54,10 +55,10 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <br clear="both"> <br>
                             <div class="form-group d-flex justify-content-center">
-                                <a href="#" class="btn btn-danger mr-4">Annuler</a> 
+                                <a href="#" class="btn btn-danger mr-4">Annuler</a>
                                 <input type="submit" value="Envoyer" class="btn btn-primary">
                             </div>
                         </div>
@@ -73,7 +74,7 @@
     let uri = '';
     let agents = document.querySelectorAll('#agent');
     let profils = document.querySelectorAll('.profil img');
-    
+
     agents.forEach(function(profil){
         profil.addEventListener('change', function(e){
             let id_agent = e.target.options[e.target.selectedIndex].value

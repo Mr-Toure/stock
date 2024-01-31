@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('matricule')->unique();
-            $table->string('email')->unique();
+            $table->string('matricule')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
             $table->integer('phone')->nullable();
             $table->integer('post')->nullable();
             $table->string('picture')->nullable();

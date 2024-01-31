@@ -25,13 +25,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Fonction extends Model
 {
-    
+
     static $rules = [
 		'libelle' => 'required',
 		'initial' => 'required',
     ];
-
-    protected $perPage = 20;
 
     /**
      * Attributes that should be mass-assignable.
@@ -48,7 +46,7 @@ class Fonction extends Model
     {
         return $this->hasMany('App\Models\Agent', 'fonction_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -56,7 +54,7 @@ class Fonction extends Model
     {
         return $this->hasOne('App\Models\Direction', 'id', 'direction_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -64,7 +62,7 @@ class Fonction extends Model
     {
         return $this->hasOne('App\Models\Service', 'id', 'service_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -72,6 +70,6 @@ class Fonction extends Model
     {
         return $this->hasOne('App\Models\Ssdirection', 'id', 'ssdirection_id');
     }
-    
+
 
 }

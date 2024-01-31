@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Update Fourniture
+    Mise à Jour Fourniture
 @endsection
 
 @section('content')

@@ -166,7 +166,7 @@ class BesoinController extends Controller
     {
         if (session('guest')) {
             $direction = Direction::whereId(session('auth')->id)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->fonctions->flatMap->agents;
 
             return view('besoin.current')->with(['active'=>'current', 'agents'=>$agents]);
         }else{
@@ -178,7 +178,7 @@ class BesoinController extends Controller
     {
         if (session('guest')) {
             $direction = Direction::whereId(session('auth')->id)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->fonctions->flatMap->agents;
 
             return view('besoin.history')->with(['active'=>'history', 'agents'=>$agents]);
         }else{
@@ -197,7 +197,7 @@ class BesoinController extends Controller
         if (Direction::wherePass($code)->count())
         {
             $direction = Direction::wherePass($code)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->fonctions->flatMap->agents;
             toast('Bienvenu dans le portail de demande, n\'oubliez pas faire valider votre demande.','info');
             session(['guest' => true, 'auth'=>Direction::wherePass($code)->first(), 'agents'=>$agents, 'vip'=>false]);
             //dd(session('auth'));
@@ -207,7 +207,7 @@ class BesoinController extends Controller
         if (Direction::whereVpass($code)->count())
         {
             $direction = Direction::whereVpass($code)->first();
-            $agents = $direction->ssdirections->flatMap->services->flatMap->agents;
+            $agents = $direction->fonctions->flatMap->agents;
             toast('Bienvenu dans le portail de demande','info');
             session(['guest' => true, 'auth'=>Direction::whereVpass($code)->first(), 'agents'=>$agents, 'vip'=>true]);
             return redirect()->route('besoins.home')->with(['pass'=>true]);

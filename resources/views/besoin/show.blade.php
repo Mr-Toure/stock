@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Service</strong>
-                            {{ $besoin->agent->service->libelle }}
+                            {{ $besoin->agent->fonction->service->libelle }}
                         </div>
                         <table class="table table-hover table-centered mb-0">
                             <thead>

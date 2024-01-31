@@ -127,7 +127,7 @@ class FournitureController extends Controller
      */
     public function update(Request $request, Fourniture $fourniture)
     {
-        DB::transaction(function () use ($request): void {
+        DB::transaction(function () use ($request, $fourniture): void {
             request()->validate(Fourniture::$rules);
             if($request->hasfile('picture'))
             {
@@ -136,6 +136,7 @@ class FournitureController extends Controller
                 $filename = 'fourniture_'.time().'.'.$extenstion;
                 $file->move('storage/fournitures/', $filename);
                 $request->picture = "storage/fournitures/".$filename;
+
             }else{
                 $request->picture = $fourniture->picture;
             }

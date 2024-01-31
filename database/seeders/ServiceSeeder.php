@@ -18,8 +18,8 @@ class ServiceSeeder extends Seeder
         DB::table('services');
 
         $services = array(
-            array('libelle' => 'GESTION ADMINISTRATIVE DU PERSONNEL','ssdirection_id' => '1'),
-            array('libelle' => 'SOUS-DIRECTEUR INFORMATIQUE','ssdirection_id' => '2'),
+            array('libelle' => 'SUIVI ET EVALUATION','ssdirection_id' => '1'),
+            array('libelle' => 'SERVICE COURRIER','ssdirection_id' => '2'),
             array('libelle' => 'SOUS-DIRECTEUR ETAT CIVIL','ssdirection_id' => '3'),
             array('libelle' => 'SERVICE ETUDE PROJETS INFORMATIQUES','ssdirection_id' => '2'),
             array('libelle' => 'SERVICE GESTION DU PARC INFORMATIQUE','ssdirection_id' => '2'),
