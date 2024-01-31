@@ -77,7 +77,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $agents->links() !!}
             </div>
         </div>
     </div>
