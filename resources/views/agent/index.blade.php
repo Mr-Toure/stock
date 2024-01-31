@@ -57,7 +57,7 @@
                                             </td>
 											<td>{{ $agent->name }}</td>
 											<td>{{ $agent->surname }}</td>
-											<td>{{ substr($agent->fonction->libelle, 0, 20) }}{{...}}</td>
+											<td>{{ substr($agent->fonction->libelle, 0, 20) }}{{"..."}}</td>
 											<td>{{ $agent->post }}</td>
 											<td>{{ $agent->fonction->direction->initiale ?? '' }}</td>
 
