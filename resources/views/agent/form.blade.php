@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label('Fonction') }}
-                {{ Form::select('fonction_id', $fonctions, old('fonction_id', $agent->fonction_id), ['class' => 'form-select' . ($errors->has('fonction_id') ? ' is-invalid' : '') ,'placeholder' => 'Faire un Choix']) }}
+                {{ Form::select('fonction_id', $fonctions, old('fonction_id', $agent->fonction_id), ['id'=>'fonction_id', 'class' => 'form-select' . ($errors->has('fonction_id') ? ' is-invalid' : '') ,'placeholder' => 'Faire un Choix', 'required']) }}
                 {!! $errors->first('fonction_id', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
@@ -68,3 +68,8 @@
         <button type="submit" class="btn btn-primary">Soumettre</button>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#fonction_id').select2()
+    });
+</script>
