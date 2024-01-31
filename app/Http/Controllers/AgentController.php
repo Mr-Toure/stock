@@ -71,8 +71,9 @@ class AgentController extends Controller
             "picture" => $request->picture,
         ]);
 
-        return redirect()->route('agents.index')
-            ->with('success', 'Agent created successfully.');
+        /*return redirect()->route('agents.index')
+            ->with('success', 'Agent created successfully.');*/
+        return  back()->with('success', 'Agent created successfully.');
     }
 
     /**
