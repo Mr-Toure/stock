@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\Direction;
 use App\Models\Fonction;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -33,7 +34,8 @@ class AgentController extends Controller
     public function create()
     {
         $agent = new Agent();
-        $fonctions = Fonction::pluck('libelle', 'id');
+        $fonctions = Fonction::with('direction')->get()->groupBy('direction_id');
+        //dd($directions);
         return view('agent.create', compact(['agent', 'fonctions']));
     }
 

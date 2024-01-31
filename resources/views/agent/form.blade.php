@@ -57,9 +57,20 @@
                 {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-group">
-                {{ Form::label('Fonction') }}
-                {{ Form::select('fonction_id', $fonctions, old('fonction_id', $agent->fonction_id), ['id'=>'fonction_id', 'class' => 'form-select' . ($errors->has('fonction_id') ? ' is-invalid' : '') ,'placeholder' => 'Faire un Choix', 'required']) }}
-                {!! $errors->first('fonction_id', '<div class="invalid-feedback">:message</div>') !!}
+                {{--{{ Form::label('Fonction') }}--}}
+                {{--{{ Form::select('fonction_id', $fonctions, old('fonction_id', $agent->fonction_id), ['id'=>'fonction_id', 'class' => 'form-select' . ($errors->has('fonction_id') ? ' is-invalid' : '') ,'placeholder' => 'Faire un Choix', 'required']) }}
+                {!! $errors->first('fonction_id', '<div class="invalid-feedback">:message</div>') !!}--}}
+                <label for="fonction_id">Fonction</label>
+                <select id="fonction_id" name="fonction" class="form-select" required>
+                    <option selected disabled>Faire un choix</option>
+                    @foreach($fonctions as $directionId => $fonctionsGroup)
+                        <optgroup label="{{ $fonctionsGroup[0]->direction->libelle }}">
+                            @foreach($fonctionsGroup as $fonction)
+                                <option value="{{ $fonction->id }}">{{ $fonction->libelle }}</option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
+                </select>
             </div>
         </div>
 
