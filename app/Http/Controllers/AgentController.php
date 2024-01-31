@@ -20,7 +20,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $agents = Agent::paginate();
+        $agents = Agent::with('fonction', 'direction');
 
         return view('agent.index', compact('agents'))->with('i');
     }
