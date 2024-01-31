@@ -52,8 +52,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td>
                                                 <div class="d-flex align-items-start">
-                                                    <img class="me-2 rounded-circle" src="{{ $agent->picture ?? ""}}" width="40" alt="Generic placeholder image">
-
+                                                    <img class="me-2 rounded-circle" src="{{ $agent->picture ?? asset('/img/mairie.jpg')}}" width="40" alt="Generic placeholder image">
                                                 </div>
                                             </td>
 											<td>{{ $agent->name }}</td>
