@@ -43,7 +43,7 @@ class AgentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -59,6 +59,14 @@ class AgentController extends Controller
         }else{
             $request->picture = null;
         }
+
+        if ($request->matricule){
+            if (Agent::whereMatricule($request->matricule)->exists()){
+                alert('Valeur Existante', 'Cet agent existe déjà dans la base', 'warning');
+                return  back();
+            }
+        }
+
         //dd($request->all());
         $agent = Agent::create([
             "name" => $request->name,
