@@ -64,7 +64,7 @@
                 <select id="fonction_id" name="fonction_id" class="form-select" required>
                     <option selected disabled>Faire un choix</option>
                     @foreach($fonctions as $directionId => $fonctionsGroup)
-                        <optgroup label="{{ $fonctionsGroup[0]->direction->libelle }}">
+                        <optgroup label="{{ $fonctionsGroup[0]?->direction?->libelle }}">
                             @foreach($fonctionsGroup as $fonction)
                                 <option value="{{ $fonction->id }}">{{ $fonction->libelle }}</option>
                             @endforeach
