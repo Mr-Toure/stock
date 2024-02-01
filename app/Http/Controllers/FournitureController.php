@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Printer;
 use App\Models\Typefour;
 use App\Models\Fourniture;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,14 +44,15 @@ class FournitureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
         $fourniture = new Fourniture();
+        $fournitures =  Fourniture::all();
         $typefours = Typefour::pluck('libelle', 'id');
         $printers = Printer::pluck('name', 'id');
-        return view('fourniture.create', compact(['fourniture', 'typefours', 'printers']));
+        return view('fourniture.create', compact(['fourniture', 'fournitures', 'typefours', 'printers']));
     }
 
     /**

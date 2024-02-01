@@ -10,8 +10,18 @@
             <div class="col-4">
                 <div class="form-group">
                     {{ Form::label('designation') }}
-                    {{ Form::text('designation', $fourniture->designation, ['class' => 'form-control' . ($errors->has('designation') ? ' is-invalid' : ''), 'placeholder' => 'Designation']) }}
+                    {{ Form::text('designation', $fourniture->designation, [
+                        'class' => 'form-control' . ($errors->has('designation') ? ' is-invalid' : ''),
+                        'placeholder' => 'Designation',
+                        'list' => 'fournitures-datalist'  // Add the 'list' attribute
+                    ]) }}
                     {!! $errors->first('designation', '<div class="invalid-feedback">:message</div>') !!}
+
+                    <datalist id="fournitures-datalist">
+                        @foreach ($fournitures as $fourniture)
+                            <option value="{{ $fourniture->designation }}">{{ $fourniture->designation }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
             <div class="col-4">
