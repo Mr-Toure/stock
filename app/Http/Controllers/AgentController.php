@@ -62,7 +62,14 @@ class AgentController extends Controller
 
         if ($request->matricule){
             if (Agent::whereMatricule($request->matricule)->exists()){
-                alert('Valeur Existante', 'Cet agent existe déjà dans la base', 'warning');
+                alert('Attention', 'Cet agent existe déjà dans la base', 'warning');
+                return  back();
+            }
+        }
+
+        if ($request->email){
+            if (Agent::whereEmail($request->email)->exists()){
+                alert('Attention', 'Cet agent existe déjà dans la base', 'warning');
                 return  back();
             }
         }
@@ -81,6 +88,7 @@ class AgentController extends Controller
 
         /*return redirect()->route('agents.index')
             ->with('success', 'Agent created successfully.');*/
+        toast('Félicitation, Agent Ajouté', 'success', 'top-right');
         return  back()->with('success', 'Agent created successfully.');
     }
 
