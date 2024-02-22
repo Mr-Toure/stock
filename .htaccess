@@ -1,0 +1,4 @@
+# Turn on the rewrite engine
+RewriteEngine On
+
+RewriteRule ^(.*)$ http://192.168.10.3/stock/public/login/$1

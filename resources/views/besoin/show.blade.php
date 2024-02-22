@@ -44,8 +44,8 @@
                             {{ $besoin->created_at->format('d-m-Y H:m:s') }}
                         </div>
                         <div class="form-group">
-                            <strong>Service</strong>
-                            {{ $besoin->agent->fonction->service->libelle }}
+                            <strong>Direction</strong>
+                            {{ $besoin->agent->fonction->direction->libelle }}
                         </div>
                         <table class="table table-hover table-centered mb-0">
                             <thead>
@@ -113,23 +113,36 @@
                                             @endif
                                             >{{ $fourniture->instock->qte ?? 0}}</td>
                                             <td>
-                                                <input
-                                                    class="form-control"
-                                                    type="number"
-                                                    value="{{ $fourniture->pivot->qte }}"
-                                                    name="qte_send[]"
-                                                    min="0"
-                                                    max="{{ $fourniture->pivot->qte}}"
-                                                    @if (isset($fourniture->instock->qte))
-                                                        @if($fourniture->instock->qte == 0 )
+                                                @if (isset($fourniture->instock->qte))
+                                                    @if($fourniture->instock->qte == 0 )
+                                                        <input
+                                                            class="form-control"
+                                                            type="number"
+                                                            value="0"
+                                                            name="qte_send[]"
+                                                            min="0"
+                                                            max="{{ $fourniture->pivot->qte}}"
                                                             disabled
-                                                            hidden
-                                                        @endif
-                                                    @else
-                                                        disabled
-                                                        hidden
+                                                        >   
                                                     @endif
-                                                >
+                                                        <input
+                                                            class="form-control"
+                                                            type="number"
+                                                            value="{{ $fourniture->pivot->qte }}"
+                                                            name="qte_send[]"
+                                                            min="0"
+                                                            max="{{ $fourniture->pivot->qte}}"
+                                                        >
+                                                @else
+                                                    <input
+                                                        class="form-control"
+                                                        type="number"
+                                                        value="0"
+                                                        name="qte_send[]"
+                                                        min="0"
+                                                        max="{{ $fourniture->pivot->qte}}"
+                                                    >
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

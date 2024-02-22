@@ -67,20 +67,22 @@ class BesoinController extends Controller
         $besoin = Bonreception::whereId($id)->first();
 
         if($request->qte_send != null){
+
             foreach ($besoin->fournitures as $i => $fourniture){
+                //dd($fourniture->id, $request->qte_send);
                 $besoin->fournitures()->updateExistingPivot(['fourniture_id'=>$fourniture->id],['sent' => $request->qte_send[$i]]);
             }
+            
+            $besoin->treatBy = Auth::user()->id;
+            $besoin->treated_at = now();
+            $besoin->status = 400; //valider par le service informatique
+            $besoin->update();
+            toast('Bravo! Besoin validé','success');
+            return redirect()->back();
         }else{
             toast('Pas de quantité disponible','error');
             return redirect()->back();
         }
-
-        $besoin->treatBy = Auth::user()->id;
-        $besoin->treated_at = now();
-        $besoin->status = 400; //valider par le service informatique
-        $besoin->update();
-        toast('Bravo! Besoin validé','success');
-        return redirect()->back();
     }
 
     public function home()
@@ -141,22 +143,26 @@ class BesoinController extends Controller
     {
         //dd($request->all());
 
-        DB::transaction(function () use ($request): void {
-            $bonReception = Bonreception::create([
-                "libelle" => "Besoin du ". date("d-m-Y") ."de_".$request->agent,
-                "date_recep" => now(),
-                "status" => 100,
-                "type" => 100,
-                "sender" =>  session('auth')->id,
-                "agent_id" =>  $request->agent,
-            ]);
+        $bonReception = Bonreception::create([
+            "libelle" => "Besoin du ". date("d-m-Y") ."de_".$request->agent,
+            "date_recep" => now(),
+            "status" => 100,
+            "type" => 100,
+            "sender" =>  session('auth')->id,
+            "agent_id" =>  $request->agent,
+        ]);
 
-            if($bonReception){
+        if($bonReception){
+            if(request('fourniture_id') === null){
+                toast('Error! Vous devez choisir quelque chose','error');
+                return redirect()->back();
+            }else{
                 for ($i=0; $i < count(request('fourniture_id')) ; $i++) {
                     $bonReception->fournitures()->attach(request('fourniture_id')[$i], ['qte' => request('qte')[$i]]);
                 }
             }
-        });
+            
+        }
 
         toast('Bravo! Besoin émit avec success','success');
         return redirect()->route('besoins.current');
@@ -194,6 +200,7 @@ class BesoinController extends Controller
     public function verify(Request $request)
     {
         $code = htmlspecialchars(htmlentities($request->code));
+        
         if (Direction::wherePass($code)->count())
         {
             $direction = Direction::wherePass($code)->first();

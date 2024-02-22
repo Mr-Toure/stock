@@ -60,7 +60,7 @@
 					<tr>
 						<td align="left">
 							<div class="img">
-								<img src="{{ public_path('/img/logo.jpg') }}" alt="" width="300">
+								<img src="{{ public_path('/img/mairie.jpg') }}" alt="" width="100">
 							</div>
 						</td>
 						<td align="right">
@@ -89,7 +89,7 @@
 							<tbody>
 								<tr>
 									<td align="left"><div><b>Date demande: </b> {{ $besoin->newDate($besoin->date_recep)->format('d/m/Y H:m') }}</div></td>
-									<td align="right"><div><b>N°</b> :  <span style="color:red">Impri_00_Nat_{{ $besoin->id }}</span></div></td>
+									<td align="right"><div><b>N°</b> :  <span style="color:red">Mairie_{{date('Y')}}_{{ $besoin->id }}</span></div></td>
 								</tr>
 							</tbody>
 						</table>
@@ -97,12 +97,12 @@
 							<tbody>
 								<tr>
 									<td align="left"><div><b>Date de R&eacute;ception: </b> <?= date('d/m/Y H:m') ?></div></td>
-									<td align="right"><div><b>Direction</b> : {{ $besoin->agent->service->ssdirection->direction->libelle }} </div></td>
+									<td align="right"><div><b>Direction</b> : {{ $besoin->agent->fonction->direction->libelle }} </div></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="dc"><b>Nom : </b> {{ $besoin->agent->name }} {{ $besoin->agent->surname }}</div>
-						<div class="dc"><b>Email : </b> {{ $besoin->agent->email }}</div>
+						<div class="dc"><b>Matricule : </b> <b  style="color:red">{{ $besoin->agent->matricule }}</b> </div>
 						<br>
 					</div>
 					<div class="bodyContent"><br>
@@ -146,8 +146,8 @@
 			<table width="100%">
 				<tbody>
 					<tr>
-						<td align="left"><div><u>Pour la direction</u></div></td>
-						<td align="right"><div><u>Gestion Stock</u></div></td>
+						<td align="left"><div><u>Reception</u></div></td>
+						<td align="right"><div><u>Gestionnaire du Stock</u></div></td>
 					</tr>
 				</tbody>
 			</table>

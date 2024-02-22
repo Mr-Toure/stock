@@ -65,8 +65,8 @@ class CommandeController extends Controller
             $fournisseurs = Fournisseur::pluck('name', 'id');
             $fournitures = Fourniture::with('typefour.famille')->get();
             foreach ($fournitures as $fourniture) {
-                //dd($fourniture->typefour->famille->id);
-                if($fourniture->typefour->famille->id == request('famille_id')){
+                //dd(request('famille_id'));
+                if($fourniture?->typefour?->famille?->id == request('famille_id')){
                     $fours[] = $fourniture;
                 }
                 //dump($fourniture->typefour->famille->id == request('famille_id');

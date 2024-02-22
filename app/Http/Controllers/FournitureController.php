@@ -117,9 +117,10 @@ class FournitureController extends Controller
     public function edit($id)
     {
         $fourniture = Fourniture::find($id);
+        $fournitures = Fourniture::get();
         $typefours = Typefour::pluck('libelle', 'id');
         $printers = Printer::pluck('name', 'id');
-        return view('fourniture.edit', compact(['fourniture', 'typefours', 'printers']));
+        return view('fourniture.edit', compact(['fourniture', 'fournitures', 'typefours', 'printers']));
     }
 
     /**

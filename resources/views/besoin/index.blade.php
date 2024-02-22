@@ -54,7 +54,7 @@
 											<td>{{ $besoin->fournitures[0]->typefour->libelle }}</td>
 											<td>{{ $besoin->agent->name }} {{ $besoin->agent->surname }}</td>
 											<td>{{ $besoin->created_at->format('d-m-Y H:m') }}</td>
-											<td>{{ $besoin->agent->fonction->service->ssdirection->direction->initiale }}</td>
+											<td>{{ $besoin->agent->fonction->direction->initiale }}</td>
 
                                             <td>
                                                 <a class="btn btn-sm btn-primary " href="{{ route('besoin.show',$besoin->id) }}"><i class="fa fa-fw fa-edit"></i></a>
@@ -93,7 +93,7 @@
 											<td>{{ $besoin->fournitures[0]->typefour->libelle }}</td>
 											<td>{{ $besoin->agent->name }} {{ $besoin->agent->surname }}</td>
 											<td>{{ $besoin->created_at->format('d-m-Y') }}</td>
-											<td>{{ $besoin->agent->service->ssdirection->direction->initiale }}</td>
+											<td>{{ $besoin->agent->fonction->direction->initiale }}</td>
 											<td>
                                                 @if ($besoin->status == 200)
                                                     <span class="badge bg-success">Terminer</span>
