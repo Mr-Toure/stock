@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Logiciel des Moyens generaux du tribunal premeiere instance Bouake" name="description" />
+    <meta content="Logiciel des Moyens généraux du tribunal premiere instance Bingerville" name="description" />
     <meta content="Développeur fullstack (toure-simplice@outlook.fr)" name="Touré Simplice" />
     <title>DEMANDES DE CONSOMMABLES</title>
     <link rel="shortcut icon" href="favicon.jpg">
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('assets/besoins/css/select2.min.css') }}">
     <style>
         .select2-container--default .select2-selection--single{
-            border: none;
             width: 100% !important;
             height: calc(1.5em + 0.75rem + 2px);
             padding: 0.375rem 0.75rem;

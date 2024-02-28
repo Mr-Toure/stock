@@ -3,9 +3,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>MyStock Port-Bouët</title>
+        <title>MyStock Bingerville</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Logiciel des Moyens generaux du tribunal premeiere instance Bouake" name="description" />
+        <meta content="Logiciel des Moyens généraux du tribunal premier instance Bingerville" name="description" />
         <meta content="Développeur fullstack (toure-simplice@outlook.fr)" name="Touré Simplice" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="favicon.jpg">

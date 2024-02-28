@@ -3,9 +3,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Moyen Generaux Bouake</title>
+        <title>Moyen Généraux Bingerville</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Logiciel des Moyens generaux du tribunal premeiere instance Bouake" name="description" />
+        <meta content="Logiciel des Moyens généraux du tribunal premier instance Bingerville" name="description" />
         <meta content="Développeur fullstack (toure-simplice@outlook.fr)" name="Touré Simplice" />
 
         <!-- App favicon-->
@@ -55,7 +55,7 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Acceuil</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Accueil</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Application</a></li>
                                             <li class="breadcrumb-item active">{{ $fil ?? 'Tableau de Bord'}}</li>
                                         </ol>
@@ -74,8 +74,11 @@
                     <footer class="footer">
                         <div class="container-fluid">
                             <div class="row justify-content-center">
-                                <div class="col-md-6">
-                                    <script>document.write(new Date().getFullYear())</script> © Fait avec <span class="text-danger" style="font-size: 1.5em">♥</span> Par <b class="text-danger">Mairiade</b> Logiciel de Gestion Des Moyens Généraux Du Tribunal de Première Instance Bouake
+                                <div class="col-md-8">
+                                    <script>document.write(new Date().getFullYear())</script> © Fait avec
+                                    <span class="text-danger" style="font-size: 1.5em">♥</span> Par
+                                    <b class="text-danger">Mariade Sarl</b>
+                                    Logiciel de Gestion Des Moyens Généraux Du Tribunal de Premiere Instance Bingerville
                                 </div>
                                 {{-- <div class="col-md-6">
                                     <div class="text-md-end footer-links d-none d-md-block">

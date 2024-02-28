@@ -19,9 +19,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => 'test',
-            'email' => 'test@test.test',
+            'email' => 'admin@geidan.ci',
             'email_verified_at' => now(),
-            'password' => password_hash('12345678', 1), // 14785236
+            'password' => password_hash('123456', 1), // 14785236
             'remember_token' => Str::random(10),
         ];
     }
