@@ -22,14 +22,14 @@
                                 @if ($besoin->status != 300)
                                     <a href="{{ route('besoins.await', $besoin->id) }}" class="btn btn-warning">Mettre en Attente</a>
                                 @endif
+                                @if ($besoin->status != 500)
+                                    <a href="{{ route('besoins.canceled', $besoin->id) }}" class="btn btn-danger">Refuser La Commande</a>
+                                @endif
                             @endif
 
                         </div>
 
                     </div>
-                    {{-- <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
-                    </div> --}}
                     <div class="card-body">
 						<div class="form-group">
                             <strong>Nom & Prénom(s)</strong>

@@ -24,7 +24,7 @@ class FournitureController extends Controller
      */
     public function index()
     {
-        $fournitures = Fourniture::all();
+        $fournitures = Fourniture::with(['instock', 'typefour'])->get();
 
         return view('fourniture.index', compact('fournitures'))->with('i');
     }

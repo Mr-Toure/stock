@@ -2,8 +2,8 @@
 
     <div class="leftbar-user">
         <a href="javascript: void(0);">
-            <img src="{{ asset('img/user.jpg') }}" alt="user-image" height="80" class="rounded-circle shadow-sm">
-            <span class="leftbar-user-name">Toure Simplice</span>
+            <img src="{{ asset('img/mairie.jpg') }}" alt="user-image" height="80" class="rounded-circle shadow-sm">
+            <span class="leftbar-user-name">{{Auth::user()->name}}</span>
         </a>
     </div>
 

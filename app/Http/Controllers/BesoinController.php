@@ -39,9 +39,32 @@ class BesoinController extends Controller
      */
     public function index()
     {
-        $besoins = Bonreception::whereNotIn('status', [500, 100])->get();
-        //dd($besoins);
+        if(Auth::check()){
+            if(str_contains(Auth::user()->email, 'stock')){
+                $besoins_informatique = $this->filter_need_by_typefour([3, 4, 5, 8, 10]);
+                
+            }elseif(str_contains(Auth::user()->email, 'fourniture')){
+                $besoins_fournitures = $this->filter_need_by_typefour([7, 9, 6]);
+            }else{
+                $besoinComplete = Bonreception::whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
+            }
+            $besoins =  $besoins_fournitures ?? $besoins_informatique ?? $besoinComplete;
+        }
+    
         return view('besoin.index', compact('besoins'));
+    }
+
+    private function filter_need_by_typefour(array $plage) {
+        $data = $this->getBonreception();
+        return $data->filter(function ($item) use ($plage) {
+            return isset($item['fournitures']) && in_array($item['fournitures'][0]['typefour']['id'], 
+            $plage);
+          });
+    }
+
+    private function getBonreception(){
+        //recupére les bons receptions qui sont pas attente et refuser.
+        return Bonreception::whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
     }
 
     /**
@@ -238,7 +261,7 @@ class BesoinController extends Controller
         $besoin->status = 500; //Demande refuser
         $besoin->save();
         toast('La demande a été refusé avec succès','danger');
-        return redirect()->back();
+        return redirect()->route('besoin.index');
     }
 
     public function await($id) {
