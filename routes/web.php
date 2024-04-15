@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FonctionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Models\Bonreception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,10 +34,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 */
 /*expression de besoin*/
 
-/* Route::get('/connexion', function () {
-    return view('besoin.auth');
-})->name('connexion');
- */
 Route::get('/connexion', [BesoinController::class, 'connexion'])->name('besoins.auth');
 Route::post('/connexion', [BesoinController::class, 'verify'])->name('besoins.verify');
 Route::post('/send', [BesoinController::class, 'send'])->name('besoins.send');
@@ -47,24 +45,8 @@ Route::get('/besoin/accepted/{id}', [BesoinController::class, 'accepted'])->name
 Route::get('/besoin/canceled/{id}', [BesoinController::class, 'canceled'])->name('besoins.canceled');
 Route::get('/besoin/await/{id}', [BesoinController::class, 'await'])->name('besoins.await');
 Route::get('/besoin/logout', [BesoinController::class, 'out'])->name('besoins.logout');
-
 Route::resource('besoin', BesoinController::class);
 /*fin expression besoin*/
-
-//Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('dashboard');
-
-
-/*Route::get('/dashboard', function () {
-    return view('home.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('/', function () {
-    return view('home.index');
-})->middleware(['auth', 'verified'])->name('dashboard'); */
-
-/* Route::controller(Bonreception::class)->group(function () {
-    Route::get('/demandes', 'encres')->name('fournitures.encres');
-    //Route::get('/famille/{family}', 'show')->name('family.show');
-}); */
 
 Route::middleware('auth')->group(function () {
 
@@ -88,6 +70,8 @@ Route::middleware('auth')->group(function () {
         'commandes' =>CommandeController::class,
         'bonlivraisons' =>BonlivraisonController::class,
         'fonctions' => FonctionController::class,
+        'users' => UserController::class,
+        'roles' => RoleController::class,
     ]);
 
     Route::controller(CommandeController::class)->group(function () {

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Scolar Login</title>
+        <title>Page de connexion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
+        <meta content="Gestion de stock" name="Toure Simplice" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="favicon.jpg">
 
@@ -18,7 +18,7 @@
 
     </head>
 
-    <body class="loading authentication-bg" data-layout-config='{"darkMode":falses}'>
+    <body class="loading authentication-bg" data-layout-config='{"darkMode":false}'>
         @include('sweetalert::alert')
         @yield('content')
         <!-- end page -->

@@ -97,9 +97,9 @@
                     </a>
 
                     <!-- item-->
-                    <a href="#" class="dropdown-item notify-item">
+                    <a href="{{route('users.index')}}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-edit me-1"></i>
-                        <span>Parametre</span>
+                        <span>Gestion des profiles</span>
                     </a>
 
                     <!-- item-->
