@@ -8,20 +8,20 @@
 
         <div class="col-6">
             <div class="form-group">
-                {{ Form::label('Nom') }}
+                {{ Form::label('Nom') }}<span class="text-danger">*</span>
                 {{ Form::text('name', $agent->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Toure']) }}
                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-group">
-                {{ Form::label('Prénom(s)') }}
+                {{ Form::label('Prénom(s)') }}<span class="text-danger">*</span>
                 {{ Form::text('surname', $agent->surname, ['class' => 'form-control' . ($errors->has('surname') ? ' is-invalid' : ''), 'placeholder' => 'Simplice']) }}
                 {!! $errors->first('surname', '<div class="invalid-feedback">:message</div>') !!}
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
-                {{ Form::label('matricule') }}
-                {{ Form::text('matricule', $agent->matricule, ['class' => 'form-control' . ($errors->has('matricule') ? ' is-invalid' : ''), 'placeholder' => '0785-H']) }}
+                {{ Form::label('matricule') }}<span class="text-danger">*</span>
+                {{ Form::text('matricule', $agent->matricule, ['class' => 'form-control' . ($errors->has('matricule') ? ' is-invalid' : ''), 'placeholder' => '0785-H', 'required']) }}
                 {!! $errors->first('matricule', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-group">
@@ -57,10 +57,7 @@
                 {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="form-group">
-                {{--{{ Form::label('Fonction') }}--}}
-                {{--{{ Form::select('fonction_id', $fonctions, old('fonction_id', $agent->fonction_id), ['id'=>'fonction_id', 'class' => 'form-select' . ($errors->has('fonction_id') ? ' is-invalid' : '') ,'placeholder' => 'Faire un Choix', 'required']) }}
-                {!! $errors->first('fonction_id', '<div class="invalid-feedback">:message</div>') !!}--}}
-                <label for="fonction_id">Fonction</label>
+                <label for="fonction_id">Fonction <span class="text-danger">*</span></label>
                 <select id="fonction_id" name="fonction_id" class="form-select" required>
                     <option selected disabled>Faire un choix</option>
                     @foreach($fonctions as $directionId => $fonctionsGroup)

@@ -57,9 +57,8 @@ class BesoinController extends Controller
     private function filter_need_by_typefour(array $plage) {
         $data = $this->getBonreception();
         return $data->filter(function ($item) use ($plage) {
-            return isset($item['fournitures']) && in_array($item['fournitures'][0]['typefour']['id'], 
-            $plage);
-          });
+           return isset($item['fournitures']['0']) && in_array($item['fournitures']['0']['typefour']['id'], $plage);
+        });
     }
 
     private function getBonreception(){

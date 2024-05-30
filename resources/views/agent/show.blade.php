@@ -54,23 +54,7 @@
                                     <div class="col-md-8 mt-3">
                                         <div class="form-group">
                                             <strong>Direction:</strong>
-                                            {{ $agent->service->ssdirection->direction->libelle }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 mt-3">
-                                        <div class="form-group">
-                                            <strong>Sous-Direction:</strong>
-                                            {{ $agent->service->ssdirection->libelle }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 mt-3">
-                                        <div class="form-group">
-                                            <strong>Service:</strong>
-                                            {{ $agent->service->libelle }}
+                                            {{ $agent->fonction->direction->libelle }}
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +96,7 @@
                                                         <img src="{{ asset('img/user.jpg') }}" alt="table-user" class="me-2 rounded-circle" />
                                                         {{ $besoin->agent->name }} {{ $besoin->agent->surname }}
                                                     </td>
-                                                    <td>{{ $besoin->agent->service->ssdirection->direction->initiale }}</td>
+                                                    <td>{{ $besoin->agent->fonction->direction->initiale }}</td>
                                                     <td>{{ $besoin->fournitures->first()->typefour->libelle }}</td>
                                                     <td>
                                                         @if ($besoin->status == 200)

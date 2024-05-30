@@ -62,16 +62,21 @@ class AgentController extends Controller
 
         if ($request->matricule){
             if (Agent::whereMatricule($request->matricule)->exists()){
-                alert('Attention', 'Cet agent existe déjà dans la base', 'warning');
+                alert('Attention', 'Ce matricule existe déjà dans la base', 'warning');
                 return  back();
             }
         }
 
         if ($request->email){
             if (Agent::whereEmail($request->email)->exists()){
-                alert('Attention', 'Cet agent existe déjà dans la base', 'warning');
+                alert('Attention', 'Cet email existe déjà dans la base', 'warning');
                 return  back();
             }
+        }
+
+        if ($request->fonction_id == null){
+            alert('Attention', 'Vous devez choisir une fonction valide pour cette agent', 'warning');
+            return  back();
         }
 
         //dd($request->all());
@@ -114,8 +119,10 @@ class AgentController extends Controller
     public function edit($id)
     {
         $agent = Agent::find($id);
-        $services = Service::pluck('libelle', 'id');
-        return view('agent.edit', compact(['agent', 'services']));
+    
+        $fonctions = Fonction::with('direction')->get()->groupBy('direction_id');
+    
+        return view('agent.edit', compact(['agent', 'fonctions']));
     }
 
     /**
@@ -145,7 +152,7 @@ class AgentController extends Controller
             "matricule" => $request->matricule,
             "phone" => $request->phone,
             "post" => $request->post,
-            "service_id" => $request->service_id,
+            "fonction_id" => $request->fonction_id,
             "picture" => $request->picture,
         ]);
 
