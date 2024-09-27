@@ -39,7 +39,8 @@
 										<th>Libelle</th>
 										<th>Date Liv</th>
 										<th>Status</th>
-										<th>Commande Id</th>
+										<th>Commande</th>
+										<th>Fournisseur</th>
 										<th>User Id</th>
 
                                         <th></th>
@@ -54,6 +55,7 @@
 											<td>{{ $bonlivraison->date_liv }}</td>
 											<td>{{ $bonlivraison->status ? 'livré':'non-livré' }}</td>
 											<td>{{ $bonlivraison->commande->libelle }}</td>
+											<td>{{ $bonlivraison->commande->fournisseur->name }}</td>
 											<td>{{ $bonlivraison->user->name }}</td>
 
                                             <td>

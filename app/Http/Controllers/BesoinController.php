@@ -63,7 +63,7 @@ class BesoinController extends Controller
 
     private function getBonreception(){
         //recupére les bons receptions qui sont pas attente et refuser.
-        return Bonreception::whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
+        return Bonreception::orderBy('created_at', 'desc')->whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
     }
 
     /**
@@ -73,7 +73,7 @@ class BesoinController extends Controller
      */
     public function approbation()
     {
-        $besoins = Bonreception::whereIn('status', [400])->get();
+        $besoins = Bonreception::orderBy('created_at', 'desc')->whereIn('status', [400])->get();
         //dd($besoins);
         return view('besoin.approbation', compact('besoins'));
     }
@@ -121,44 +121,58 @@ class BesoinController extends Controller
     public function validated(Request $request)
     {
         if (session('guest')) {
-            # code...
-            //$services = Service::all();
-            if(is_numeric($request->category)){
-                $types = Typefour::whereFamille_id(intval($request->category))->get();
-                if(!$types->isEmpty()){
-                    foreach($types as $type){
-                        $articles = Fourniture::where('typefour_id',$type->id)->get();
-                        $fours = Fourniture::where('typefour_id',$type->id)->get();
+            // Check if category is numeric
+            if (is_numeric($request->category)) {
+                // Retrieve types based on the category
+                $types = Typefour::where('famille_id', intval($request->category))->get();
+        
+                if (!$types->isEmpty()) {
+                    $articles = collect(); // Initialize a collection to store articles
+                    $fours = collect(); // Initialize a collection to store fourniture
+        
+                    foreach ($types as $type) {
+                        // Retrieve articles and fourniture for each type
+                        $articles = $articles->merge(Fourniture::where('typefour_id', $type->id)->get());
+                        $fours = $fours->merge(Fourniture::where('typefour_id', $type->id)->get());
                     }
-
+        
+                    // Check if articles collection is not empty
+                    if ($articles->isEmpty()) {
+                        toast('Aucun article trouvé pour cette catégorie', 'error');
+                        return back();
+                    }
+        
+                    // Retrieve all agents
                     $agents = Agent::all();
-
-                    foreach ($articles as $article) {
-                        $data[] = [$article->id, $article->designation];
-                    }
-                    //dd($articles);
-                    foreach ( $agents  as $agent) {
-                        $surname = $agent->name . ' ' . $agent->surname;
-                        $allAgent[] = [$agent->id, $surname];
-                    }
-
+        
+                    // Prepare data for articles
+                    $data = $articles->map(function ($article) {
+                        return [$article->id, $article->designation];
+                    });
+        
+                    // Prepare data for agents
+                    $allAgent = $agents->map(function ($agent) {
+                        return [$agent->id, $agent->name . ' ' . $agent->surname];
+                    });
+        
+                    // Convert to JSON if needed (optional)
                     $data = json_encode($data);
                     $allAgent = json_encode($allAgent);
-
+        
                     $active = 'home';
                     return view('besoin.validate', compact('active', 'articles', 'agents', 'fours', 'allAgent'));
-
-                }else{
-                toast('Cette famille de fourniture n\'existe pas','error');
+        
+                } else {
+                    toast('Cette famille de fourniture n\'existe pas', 'error');
+                    return back();
+                }
+            } else {
+                toast('OUPS! Faites un choix', 'error');
                 return back();
             }
-            }else{
-                toast('OUPS! Faite un choix','error');
-                return back();
-            }
-        }else{
+        } else {
             return $this->logout();
-        }
+        }        
     }
 
     public function send(Request $request)
@@ -260,7 +274,7 @@ class BesoinController extends Controller
         $besoin->status = 500; //Demande refuser
         $besoin->save();
         toast('La demande a été refusé avec succès','danger');
-        return redirect()->route('besoin.index');
+        return back();
     }
 
     public function await($id) {

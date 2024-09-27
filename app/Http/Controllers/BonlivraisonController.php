@@ -18,7 +18,7 @@ class BonlivraisonController extends Controller
      */
     public function index()
     {
-        $bonlivraisons = Bonlivraison::paginate();
+        $bonlivraisons = Bonlivraison::orderBy('created_at', 'desc')->paginate();
 
         return view('bonlivraison.index', compact('bonlivraisons'))
             ->with('i', (request()->input('page', 1) - 1) * $bonlivraisons->perPage());

@@ -26,7 +26,7 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        $commandes = Commande::paginate();
+        $commandes = Commande::where('status', 0)->orderBy('created_at', 'desc')->paginate();
 
         return view('commandes.index', compact('commandes'))
             ->with('i', (request()->input('page', 1) - 1) * $commandes->perPage());
@@ -137,35 +137,42 @@ class CommandeController extends Controller
      */
     public function update(Request $request, Commande $commande)
     {
-        //dd($request->all());
+        // Validation des données de la requête
+        $request->validate([
+            'liv_qte' => 'required|array',
+            'liv_qte.*' => 'required|integer|min:1', // Vérifiez que chaque quantité est valide
+        ]);
 
         DB::transaction(function () use ($request, $commande): void {
+            // Création d'un bon de livraison
             $livraison = Bonlivraison::create([
-                "libelle" => "LIVRAISON DU " . date("d-m-Y"),
-                "date_liv" =>  now(),
-                "status" =>  1,
-                "commande_id" =>  $commande->id,
-                "user_id" =>  Auth::user()->id,
+                'libelle' => 'LIVRAISON DU ' . now()->format('d-m-Y'),
+                'date_liv' => now(),
+                'status' => 1,
+                'commande_id' => $commande->id,
+                'user_id' => Auth::id(), // Utilisez Auth::id() pour simplifier
             ]);
 
-            if($livraison){
+            // Traitement des fournitures
+            foreach ($commande->fournitures as $i => $fourniture) {
+                // Vérification de la quantité livrée
+                $quantiteLivree = $request->input('liv_qte.' . $i, 0);
 
-                foreach ($commande->fournitures as $i => $fourniture) {
+                // Attacher la fourniture avec la quantité
+                $livraison->fournitures()->attach($fourniture->id, ['qte' => $quantiteLivree]);
 
-                    $livraison->fournitures()->attach($fourniture->id, ['qte' => request('liv_qte')[$i]]);
-                    $instock = new Instock();
-                    $instock->updateOrCreate(
-                        ["fourniture_id" => $fourniture->id],
-                        [
-                            "fourniture_id" => $fourniture->id,
-                            "qte" => request('liv_qte')[$i] + $instock->qte
-                        ],
-                    );
-                }
-                $commande->status = 1;
-                $commande->save();
+                // Mettre à jour ou créer l'entrée en stock
+                Instock::updateOrCreate(
+                    ['fourniture_id' => $fourniture->id],
+                    ['qte' => DB::raw('qte + ' . (int)$quantiteLivree)]
+                );
             }
+
+            // Mettre à jour le statut de la commande
+            $commande->status = 1;
+            $commande->save();
         });
+
         /* request()->validate(Commande::$rules);
 
         $commande->update($request->all()); */
