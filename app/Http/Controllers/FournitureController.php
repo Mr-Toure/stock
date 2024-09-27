@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Printer;
 use App\Models\Typefour;
 use App\Models\Fourniture;
@@ -172,5 +173,24 @@ class FournitureController extends Controller
 
         return redirect()->route('fournitures.index')
             ->with('success', 'Fourniture deleted successfully');
+    }
+
+    public function liste() {
+        $fournitures = Fourniture::with(['instock', 'typefour'])->where('typefour_id',5)->get();
+        $pdf = PDF::loadView('pdf.liste', compact('fournitures'));
+
+        return $pdf->download('ListeDesFournitures.pdf');
+    }
+
+    public function seuil() {
+        $fournitures = Fourniture::with(['instock', 'typefour'])->where('typefour_id',5)->get();
+        $pdf = PDF::loadView('pdf.seuil', compact('fournitures'));
+        return $pdf->download('ListeDesFournituresSeuil.pdf');
+    }
+
+    public function zero() {
+        $fournitures = Fourniture::with(['instock', 'typefour'])->where('typefour_id',5)->get();
+        $pdf = PDF::loadView('pdf.zero', compact('fournitures'));
+        return $pdf->download('ListeDesFournituresFini.pdf');
     }
 }

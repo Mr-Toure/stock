@@ -93,6 +93,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/besoins/approbation', [BesoinController::class, 'approbation'])->name('besoins.approbation');
     Route::get('/besoins/terminated/{id}', [BesoinController::class, 'terminated'])->name('besoins.terminated');
 
+    //liste etat fourniture 
+    Route::get('fourniture/pdf/liste', [FournitureController::class, 'liste'])->name('fourniture.liste.pdf');
+    Route::get('fourniture/pdf/seuil', [FournitureController::class, 'seuil'])->name('fourniture.seuil.pdf');
+    Route::get('fourniture/pdf/sous-seuil', [FournitureController::class, 'zero'])->name('fourniture.zero.pdf');
+
 });
 
 require __DIR__.'/auth.php';

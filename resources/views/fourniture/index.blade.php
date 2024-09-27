@@ -16,11 +16,27 @@
                                 {{ __('Fourniture') }}
                             </span>
 
-                             <div class="float-right">
+                            <div class="float-right">
+                                <a href="{{ route('fourniture.liste.pdf') }}" class="btn btn-success btn-sm float-right"  data-placement="left">
+                                    <i class="mdi mdi-pdf"></i>{{ __('liste') }}
+                                </a>
+                            </div>
+                            <div class="float-right">
+                                <a href="{{ route('fourniture.seuil.pdf') }}" class="btn btn-success btn-sm float-right"  data-placement="left">
+                                    <i class="mdi mdi-pdf"></i>{{ __('Liste Sous Seuil') }}
+                                </a>
+                            </div>
+                            <div class="float-right">
+                                <a href="{{ route('fourniture.zero.pdf') }}" class="btn btn-success btn-sm float-right"  data-placement="left">
+                                    <i class="mdi mdi-pdf"></i>{{ __('Liste Des Ruptures') }}
+                                </a>
+                            </div>
+
+                            <div class="float-right">
                                 <a href="{{ route('fournitures.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Ajouter') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -63,7 +79,13 @@
 											<td>{{ $fourniture->designation }}</td>
 											<td>{{ $fourniture->marque }}</td>
 											<td>{{ $fourniture->qte_seuil }}</td>
-											<td>{{ $fourniture->instock->qte ?? 0 }}</td>
+											<td>
+                                                @if($fourniture->instock !== null and $fourniture->instock->qte > 0)
+                                                    {{ $fourniture->instock->qte ?? 0 }}
+                                                @else
+                                                    0
+                                                @endif
+                                            </td>
 											<td>{{ $fourniture->typefour?->libelle }}</td>
 
                                             <td>
