@@ -39,31 +39,9 @@ class BesoinController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
-            if(str_contains(Auth::user()->email, 'stock')){
-                $besoins_informatique = $this->filter_need_by_typefour([3, 4, 5, 8, 10]);
-                
-            }elseif(str_contains(Auth::user()->email, 'fourniture')){
-                $besoins_fournitures = $this->filter_need_by_typefour([7, 9, 6]);
-            }else{
-                $besoinComplete = Bonreception::whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
-            }
-            $besoins =  $besoins_fournitures ?? $besoins_informatique ?? $besoinComplete;
-        }
-    
+        $besoins =  Bonreception::orderBy('created_at', 'desc')->whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
+        //dd($besoins);
         return view('besoin.index', compact('besoins'));
-    }
-
-    private function filter_need_by_typefour(array $plage) {
-        $data = $this->getBonreception();
-        return $data->filter(function ($item) use ($plage) {
-           return isset($item['fournitures']['0']) && in_array($item['fournitures']['0']['typefour']['id'], $plage);
-        });
-    }
-
-    private function getBonreception(){
-        //recupére les bons receptions qui sont pas attente et refuser.
-        return Bonreception::orderBy('created_at', 'desc')->whereNotIn('status', [500, 100])->with(['fournitures.typefour', 'agent.fonction.direction'])->get();
     }
 
     /**
@@ -91,7 +69,6 @@ class BesoinController extends Controller
         if($request->qte_send != null){
 
             foreach ($besoin->fournitures as $i => $fourniture){
-                //dd($fourniture->id, $request->qte_send);
                 $besoin->fournitures()->updateExistingPivot(['fourniture_id'=>$fourniture->id],['sent' => $request->qte_send[$i]]);
             }
             
@@ -177,8 +154,6 @@ class BesoinController extends Controller
 
     public function send(Request $request)
     {
-        //dd($request->all());
-
         $bonReception = Bonreception::create([
             "libelle" => "Besoin du ". date("d-m-Y") ."de_".$request->agent,
             "date_recep" => now(),
