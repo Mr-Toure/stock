@@ -24,7 +24,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt">
-          <span>2022 - </span> {{date('Y')}} © Gestion - Stock - Sous-Direction Informatique
+            <span>2022 - </span> {{date('Y')}} © Gestion - Stock - Mariade SARL
         </footer>
 
         <!-- bundle -->

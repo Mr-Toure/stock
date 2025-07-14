@@ -40,7 +40,7 @@
         <div class="contens">
             <div class="first">
                 <div class="mpb">
-                    <img src="{{asset('/img/mairie.png')}}" alt="Logo Mairie de Port-Bouët">
+                    <img src="{{asset('/img/mairie.png')}}" alt="Logo">
                 </div>
                 <div style="margin: 0 auto;display: flex; justify-content: center;"><a href="{{ route('besoins.logout') }}" class="btn btn-outline-warning" > <i class="fas fa-power-off"></i> Déconnexion</a></div>
                 <div class="menu">
